@@ -5,33 +5,33 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractQRCodeUseCase<T, R, E> implements QRCodeUseCase<T, R> {
-    protected final JpaRepository<E, Long> repository;
+public abstract class AbstractQRCodeUseCase<Request, Response, Model> implements QRCodeUseCase<Request, Response> {
+    protected final JpaRepository<Model, Long> repository;
 
-    protected AbstractQRCodeUseCase(JpaRepository<E, Long> repository) {
+    protected AbstractQRCodeUseCase(JpaRepository<Model, Long> repository) {
         this.repository = repository;
     }
 
     @Override
-    public void save(T request) {
-        E entity = this.toEntity(request);
-        this.repository.save(entity);
+    public Response save(Request request) {
+        Model entity = this.toEntity(request);
+        return this.toResponse(this.repository.save(entity));
     }
 
     @Override
-    public List<R> qrCodeList() {
-        List<E> entities = new ArrayList<>();
+    public List<Response> qrCodeList() {
+        List<Model> entities = new ArrayList<>();
         repository.findAll().forEach(entities::add);
         return entities.stream().map(this::toResponse).toList();
     }
 
     @Override
-    public R findById(Long id) throws Exception {
-        E entity = repository.findById(id).orElseThrow(() -> new Exception("Registro nao encontrado"));
+    public Response findById(Long id) throws Exception {
+        Model entity = repository.findById(id).orElseThrow(() -> new Exception("Registro nao encontrado"));
         return toResponse(entity);
     }
 
-    protected abstract E toEntity(T request);
+    protected abstract Model toEntity(Request request);
 
-    protected abstract R toResponse(E entity);
+    protected abstract Response toResponse(Model entity);
 }
