@@ -1,4 +1,4 @@
-package com.dock.qrcode.application.usecase;
+package com.dock.qrcode.application.service;
 
 import com.dock.qrcode.adapter.request.QRCodeDueDateRequest;
 import com.dock.qrcode.adapter.response.QRCodeDueDateResponse;
@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateQRCodeDueDateUseCase extends AbstractQRCodeUseCase<QRCodeDueDateRequest, QRCodeDueDateResponse, QRCodeDueDate> {
-    protected CreateQRCodeDueDateUseCase(JpaRepository<QRCodeDueDate, Long> repository) {
+public class QRCodeDueDateService extends BaseQRCodeService<QRCodeDueDateRequest, QRCodeDueDateResponse, QRCodeDueDate> {
+    protected QRCodeDueDateService(JpaRepository<QRCodeDueDate, Long> repository) {
         super(repository);
     }
 
@@ -21,6 +21,7 @@ public class CreateQRCodeDueDateUseCase extends AbstractQRCodeUseCase<QRCodeDueD
         qrCodeDueDate.setStatus(request.getStatus());
         qrCodeDueDate.setExpiredDate(request.getExpiredDate());
         qrCodeDueDate.setChangeableAmount(request.getChangeableAmount());
+        qrCodeDueDate.setInterest(request.getInterest());
         return qrCodeDueDate;
     }
 
@@ -34,6 +35,7 @@ public class CreateQRCodeDueDateUseCase extends AbstractQRCodeUseCase<QRCodeDueD
         response.setStatus(entity.getStatus());
         response.setExpiredDate(entity.getExpiredDate());
         response.setChangeableAmount(entity.getChangeableAmount());
+        response.setInterest(entity.getInterest());
         return response;
     }
 }

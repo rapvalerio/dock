@@ -1,4 +1,4 @@
-package com.dock.qrcode.application.usecase;
+package com.dock.qrcode.application.service;
 
 import com.dock.qrcode.adapter.request.QRCodeRequest;
 import com.dock.qrcode.adapter.response.QRCodeResponse;
@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateQRCodeUseCase extends AbstractQRCodeUseCase<QRCodeRequest, QRCodeResponse, QRCode> {
-    protected CreateQRCodeUseCase(JpaRepository<QRCode, Long> repository) {
+public class QRCodeService extends BaseQRCodeService<QRCodeRequest, QRCodeResponse, QRCode> {
+    protected QRCodeService(JpaRepository<QRCode, Long> repository) {
         super(repository);
     }
 
