@@ -1,7 +1,7 @@
 package com.dock.qrcode.adapter.controller;
 
-import com.dock.qrcode.adapter.request.QRCodeDueDateRequest;
-import com.dock.qrcode.adapter.response.QRCodeDueDateResponse;
+import com.dock.qrcode.adapter.dto.request.QRCodeDueDateRequest;
+import com.dock.qrcode.adapter.dto.response.QRCodeDueDateResponse;
 import com.dock.qrcode.application.service.QRCodeDueDateService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

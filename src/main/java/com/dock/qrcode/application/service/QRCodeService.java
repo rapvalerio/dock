@@ -1,7 +1,7 @@
 package com.dock.qrcode.application.service;
 
-import com.dock.qrcode.adapter.request.QRCodeRequest;
-import com.dock.qrcode.adapter.response.QRCodeResponse;
+import com.dock.qrcode.adapter.dto.request.QRCodeRequest;
+import com.dock.qrcode.adapter.dto.response.QRCodeResponse;
 import com.dock.qrcode.domain.model.QRCode;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;

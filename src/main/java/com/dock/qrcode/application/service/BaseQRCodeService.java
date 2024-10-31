@@ -2,9 +2,8 @@ package com.dock.qrcode.application.service;
 
 import com.dock.qrcode.application.exception.QRCodeNotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class BaseQRCodeService<Request, Response, Model> implements QRCodeServiceInterface<Request, Response> {
     protected final JpaRepository<Model, Long> repository;
@@ -21,15 +20,16 @@ public abstract class BaseQRCodeService<Request, Response, Model> implements QRC
 
     @Override
     public List<Response> qrCodeList() {
-        List<Model> entities = new ArrayList<>();
-        repository.findAll().forEach(entities::add);
-        return entities.stream().map(this::toResponse).toList();
+        return repository.findAll().stream()
+                .map(this::toResponse)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Response findById(Long id){
-        Model entity = repository.findById(id).orElseThrow(() -> new QRCodeNotFoundException("Registro nao encontrado id: " + id));
-        return toResponse(entity);
+    public Response findById(Long id) {
+        return repository.findById(id)
+                .map(this::toResponse)
+                .orElseThrow(() -> new QRCodeNotFoundException("Registro nao encontrado id: " + id));
     }
 
     protected abstract Model toEntity(Request request);

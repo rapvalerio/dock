@@ -1,7 +1,7 @@
 package com.dock.qrcode.adapter.controller;
 
-import com.dock.qrcode.adapter.request.QRCodeRequest;
-import com.dock.qrcode.adapter.response.QRCodeResponse;
+import com.dock.qrcode.adapter.dto.request.QRCodeRequest;
+import com.dock.qrcode.adapter.dto.response.QRCodeResponse;
 import com.dock.qrcode.application.service.QRCodeService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

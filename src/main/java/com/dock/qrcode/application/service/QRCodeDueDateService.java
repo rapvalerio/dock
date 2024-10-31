@@ -1,7 +1,7 @@
 package com.dock.qrcode.application.service;
 
-import com.dock.qrcode.adapter.request.QRCodeDueDateRequest;
-import com.dock.qrcode.adapter.response.QRCodeDueDateResponse;
+import com.dock.qrcode.adapter.dto.request.QRCodeDueDateRequest;
+import com.dock.qrcode.adapter.dto.response.QRCodeDueDateResponse;
 import com.dock.qrcode.domain.model.QRCodeDueDate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
