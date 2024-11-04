@@ -57,9 +57,12 @@ http://localhost:8080/swagger-ui.html
 
 ```json
 {
-  "description": "Pagamento para fatura XYZ",
-  "amount": 150.0,
-  "status": "new"
+    "description" : "QR Code para pagar agora",
+    "amount" : 10.25,
+    "status" : "new",
+    "changeableAmount" : true,
+    "expiredDate" : "2024-11-30 09:00:00",
+    "dueDate" : "2024-11-30 09:00:00"
 }
 ```
 
@@ -71,10 +74,13 @@ http://localhost:8080/swagger-ui.html
 
 ```json
 {
-  "description": "Pagamento com vencimento",
-  "amount": 200.0,
-  "status": "new",
-  "dueDate": "2024-12-31T23:59:59"
+    "description" : "QR Code para pagar daqui a 24 horas",
+    "amount" : 10.25,
+    "status" : "new",
+    "changeableAmount" : true,
+    "expiredDate" : "2024-11-30 09:00:00",
+    "dueDate" : "2024-11-30 09:00:00",
+    "interest" : 2
 }
 ```
 
